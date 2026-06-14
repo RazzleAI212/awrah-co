@@ -9,7 +9,11 @@ export default function Shop() {
   const [added, setAdded] = useState(false)
 
   const sizes = ["S", "M", "L", "XL", "XXL"]
-  const colours = ["Black", "Navy", "Olive"]
+  const colours = [
+    { name: "Black", image: "/product-black.png" },
+    { name: "Navy", image: "/product-navy-blue.png" },
+    { name: "Olive", image: "/product-olive-green.png" },
+  ]
 
   function handleAddToBag() {
     if (!selectedSize) return
@@ -25,11 +29,12 @@ export default function Shop() {
           <div className="grid md:grid-cols-2 gap-16 items-start">
 
             {/* Product Image */}
+{/* Product Image */}
 <div className="aspect-[3/4] relative overflow-hidden">
   <img 
-    src="/product-black.png" 
-    alt="Awrah Co Dual Layer Training Short in Black"
-    className="w-full h-full object-cover"
+    src={colours.find(c => c.name === selectedColour).image}
+    alt={`Awrah Co Dual Layer Training Short in ${selectedColour}`}
+    className="w-full h-full object-cover transition-opacity duration-300"
   />
   <div className="absolute inset-0 shadow-[inset_0_0_60px_30px_rgba(0,0,0,0.8)]" />
   <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent" />
@@ -49,26 +54,21 @@ export default function Shop() {
               </div>
 
               {/* Colour */}
-              <div className="border-t border-zinc-900 pt-8">
-                <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase mb-4">
-                  Colour — <span className="text-white">{selectedColour}</span>
-                </p>
-                <div className="flex gap-3">
-                  {colours.map((colour) => (
-                    <button
-                      key={colour}
-                      onClick={() => setSelectedColour(colour)}
-                      className={`w-8 h-8 rounded-full border-2 transition-all ${
-                        selectedColour === colour ? "border-white" : "border-zinc-700"
-                      } ${
-                        colour === "Black" ? "bg-zinc-900" :
-                        colour === "Navy" ? "bg-blue-950" :
-                        "bg-olive-800 bg-[#4a5240]"
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
+              <div className="flex gap-3">
+  {colours.map((colour) => (
+    <button
+      key={colour.name}
+      onClick={() => setSelectedColour(colour.name)}
+      className={`w-8 h-8 rounded-full border-2 transition-all ${
+        selectedColour === colour.name ? "border-white" : "border-zinc-700"
+      } ${
+        colour.name === "Black" ? "bg-zinc-900" :
+        colour.name === "Navy" ? "bg-blue-950" :
+        "bg-[#4a5240]"
+      }`}
+    />
+  ))}
+</div>
 
               {/* Size */}
               <div className="border-t border-zinc-900 pt-8">
