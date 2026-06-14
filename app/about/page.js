@@ -1,0 +1,66 @@
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
+
+export default function About() {
+  return (
+    <main className="min-h-screen bg-black">
+      <Navbar />
+      <section className="pt-48 pb-32 px-6">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase mb-6">
+            Our Story
+          </p>
+          <h1 className="text-white text-5xl md:text-7xl font-bold tracking-tight leading-none mb-16 font-serif">
+            Built from <br />frustration.
+          </h1>
+          <div className="space-y-8">
+            <p className="text-zinc-400 text-lg leading-relaxed">
+              Every Muslim man who trains knows the feeling. You show up to the gym, the pitch, the track — and you're immediately faced with a choice nobody should have to make. Compromise your deen or compromise your performance.
+            </p>
+            <p className="text-zinc-400 text-lg leading-relaxed">
+              Standard gym shorts don't cover. Tracksuit bottoms overheat and restrict movement. The modest activewear market has catered almost exclusively to women. Muslim men have been an afterthought for too long.
+            </p>
+            <p className="text-zinc-400 text-lg leading-relaxed">
+              Awrah Co was built to fix that. Performance activewear engineered specifically for Muslim men — dual layer construction, knee length coverage, breathable fabric — without sacrificing the look or feel of premium sportswear.
+            </p>
+            <p className="text-zinc-400 text-lg leading-relaxed">
+              No compromise. No afterthought. Built with purpose.
+            </p>
+          </div>
+          <div className="mt-16 pt-16 border-t border-zinc-900">
+            <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase mb-8">
+              The Values
+            </p>
+            <div className="grid md:grid-cols-3 gap-12">
+              <div>
+                <h3 className="text-white text-sm font-bold tracking-widest uppercase mb-3">
+                  Faith First
+                </h3>
+                <p className="text-zinc-500 text-sm leading-relaxed">
+                  Every design decision starts with coverage. Not as a constraint — as a foundation.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-white text-sm font-bold tracking-widest uppercase mb-3">
+                  No Compromise
+                </h3>
+                <p className="text-zinc-500 text-sm leading-relaxed">
+                  Performance and modesty are not opposites. We refuse to treat them that way.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-white text-sm font-bold tracking-widest uppercase mb-3">
+                  Built to Last
+                </h3>
+                <p className="text-zinc-500 text-sm leading-relaxed">
+                  Premium materials, considered construction. Designed to perform and endure.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </main>
+  )
+}
