@@ -25,9 +25,16 @@ export default function Shop() {
           <div className="grid md:grid-cols-2 gap-16 items-start">
 
             {/* Product Image */}
-            <div className="aspect-[3/4] bg-zinc-950 border border-zinc-900 flex items-center justify-center">
-              <p className="text-zinc-700 text-xs tracking-[0.3em] uppercase">Product Photo</p>
-            </div>
+<div className="aspect-[3/4] relative overflow-hidden">
+  <img 
+    src="/product-black.png" 
+    alt="Awrah Co Dual Layer Training Short in Black"
+    className="w-full h-full object-cover"
+  />
+  <div className="absolute inset-0 shadow-[inset_0_0_60px_30px_rgba(0,0,0,0.8)]" />
+  <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent" />
+  <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black to-transparent" />
+</div>
 
             {/* Product Details */}
             <div className="flex flex-col gap-8">
