@@ -44,24 +44,24 @@ export default function Navbar() {
         <Link href="/" title="Home" className={`text-sm font-bold tracking-widest uppercase font-serif ${isLight ? "text-black" : "text-white"}`}>
   Awrah Co
 </Link>
-          <ul className="flex gap-8 justify-center">
-            {links.map((item) => (
-              <li key={item.label}>
-                <a href={item.href} className={`text-sm tracking-wider uppercase transition-colors ${isLight ? "text-zinc-600 hover:text-black" : "text-zinc-400 hover:text-white"}`}>
-  {item.label}
-</a>
-              </li>
-            ))}
-          </ul>
+<ul className="flex gap-8 justify-center">
+  {links.map((item) => (
+    <li key={item.label}>
+      <Link href={item.href} className={`text-sm tracking-wider uppercase transition-colors ${isLight ? "text-zinc-600 hover:text-black" : "text-zinc-400 hover:text-white"}`}>
+        {item.label}
+      </Link>
+    </li>
+  ))}
+</ul>
           <div className="flex justify-end">
           <Link href="/cart" className={`flex items-center gap-2 transition-colors ${isLight ? "text-zinc-600 hover:text-black" : "text-zinc-400 hover:text-white"}`}>
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6h13M10 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z" />
               </svg>
               {itemCount > 0 && (
-                <span className="bg-white text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                  {itemCount}
-                </span>
+                <span className="bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                {itemCount}
+              </span>
               )}
             </Link>
           </div>
@@ -78,9 +78,9 @@ export default function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6h13M10 19a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z" />
               </svg>
               {itemCount > 0 && (
-                <span className="bg-white text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                  {itemCount}
-                </span>
+                <span className="bg-white text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                {itemCount}
+              </span>
               )}
             </Link>
             <button onClick={() => setMenuOpen(!menuOpen)} className="flex flex-col gap-1.5 z-50">
@@ -94,11 +94,11 @@ export default function Navbar() {
 
       {/* Full screen mobile menu */}
       <div className={`fixed inset-0 bg-black z-40 flex flex-col items-center justify-center gap-10 transition-all duration-500 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
-        {links.map((item) => (
-          <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)} className="text-white font-serif text-4xl hover:text-zinc-400 transition-colors">
-            {item.label}
-          </a>
-        ))}
+      {links.map((item) => (
+  <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} className="text-white font-serif text-4xl hover:text-zinc-400 transition-colors">
+    {item.label}
+  </Link>
+))}
         <Link href="/cart" onClick={() => setMenuOpen(false)} className="text-white font-serif text-4xl hover:text-zinc-400 transition-colors">
           Cart {itemCount > 0 && `(${itemCount})`}
         </Link>

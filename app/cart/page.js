@@ -29,7 +29,7 @@ async function handleCheckout() {
   return (
     <main className="min-h-screen bg-black">
       <Navbar />
-      <section className="pt-48 pb-32 px-6">
+      <section className="pt-48 pb-32 px-6 min-h-screen">
         <div className="max-w-3xl mx-auto">
           <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase mb-6">Your Bag</p>
           <h1 className="text-white text-4xl md:text-5xl font-bold font-serif tracking-tight mb-16">
@@ -37,12 +37,12 @@ async function handleCheckout() {
           </h1>
 
           {cart.length === 0 ? (
-            <div className="text-center py-16">
-              <p className="text-zinc-500 text-sm mb-8">Looks like you haven't added anything yet.</p>
-              <Link href="/shop" className="bg-white text-black text-sm font-bold tracking-widest uppercase px-10 py-4 hover:bg-zinc-200 transition-colors">
-                Go to Shop
-              </Link>
-            </div>
+            <div className="flex flex-col items-center justify-center text-center py-32">
+            <p className="text-zinc-500 text-sm mb-8">Looks like you haven't added anything yet.</p>
+            <Link href="/shop" className="bg-white text-black text-sm font-bold tracking-widest uppercase px-10 py-4 hover:bg-zinc-200 transition-colors">
+              Go to Shop
+            </Link>
+          </div>
           ) : (
             <div>
               {/* Cart Items */}
