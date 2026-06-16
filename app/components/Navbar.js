@@ -84,9 +84,9 @@ export default function Navbar() {
               )}
             </Link>
             <button onClick={() => setMenuOpen(!menuOpen)} className="flex flex-col gap-1.5 z-50">
-  <span className={`block w-5 h-px transition-all duration-300 ${isLight ? "bg-black" : "bg-white"} ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-  <span className={`block w-5 h-px transition-all duration-300 ${isLight ? "bg-black" : "bg-white"} ${menuOpen ? "opacity-0" : ""}`} />
-  <span className={`block w-5 h-px transition-all duration-300 ${isLight ? "bg-black" : "bg-white"} ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+  <span className={`block w-5 h-px transition-all duration-300 ${menuOpen ? "bg-white rotate-45 translate-y-[7px]" : isLight ? "bg-black" : "bg-white"}`} />
+  <span className={`block w-5 h-px transition-all duration-300 ${menuOpen ? "bg-white opacity-0" : isLight ? "bg-black" : "bg-white"}`} />
+  <span className={`block w-5 h-px transition-all duration-300 ${menuOpen ? "bg-white -rotate-45 -translate-y-[7px]" : isLight ? "bg-black" : "bg-white"}`} />
 </button>
           </div>
         </div>
