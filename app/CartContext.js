@@ -7,6 +7,19 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([])
   const [loaded, setLoaded] = useState(false)
 
+  function updateQuantity(name, size, colour, amount) {
+    setCart((prev) =>
+      prev.map((item) => {
+        if (item.name === name && item.size === size && item.colour === colour) {
+          const newQty = item.quantity + amount
+          if (newQty <= 0) return null
+          return { ...item, quantity: newQty }
+        }
+        return item
+      }).filter(Boolean)
+    )
+  }
+
   useEffect(() => {
     const saved = localStorage.getItem("awrah-cart")
     if (saved) {
@@ -53,7 +66,7 @@ export function CartProvider({ children }) {
   const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, total, itemCount }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, total, itemCount }}>
       {children}
     </CartContext.Provider>
   )

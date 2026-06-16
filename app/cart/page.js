@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useState } from "react"
 
 export default function Cart() {
-  const { cart, removeFromCart, total, itemCount } = useCart()
+  const { cart, removeFromCart, updateQuantity, total, itemCount } = useCart()
 
   const [loading, setLoading] = useState(false)
 
@@ -48,31 +48,45 @@ async function handleCheckout() {
               {/* Cart Items */}
               <div className="space-y-px bg-zinc-900 mb-12">
                 {cart.map((item) => (
-                  <div key={`${item.name}-${item.size}-${item.colour}`} className="bg-black p-6 flex items-center gap-6">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-20 h-24 object-cover"
-                    />
-                    <div className="flex-1">
-                      <p className="text-white text-sm font-bold mb-1">{item.name}</p>
-                      <p className="text-zinc-500 text-xs tracking-wider uppercase mb-1">
-                        {item.colour} — Size {item.size}
-                      </p>
-                      <p className="text-zinc-500 text-xs">Qty: {item.quantity}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-white text-sm font-bold mb-4">
-                        £{(item.price * item.quantity).toFixed(2)}
-                      </p>
-                      <button
-                        onClick={() => removeFromCart(item.name, item.size, item.colour)}
-                        className="text-zinc-600 text-xs tracking-wider uppercase hover:text-white transition-colors cursor-pointer"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  </div>
+                 <div key={`${item.name}-${item.size}-${item.colour}`} className="bg-black p-6 flex items-center gap-6">
+                 <img
+                   src={item.image}
+                   alt={item.name}
+                   className="w-20 h-24 object-cover"
+                 />
+                 <div className="flex-1">
+                   <p className="text-white text-sm font-bold mb-1">{item.name}</p>
+                   <p className="text-zinc-500 text-xs tracking-wider uppercase mb-3">
+                     {item.colour} — Size {item.size}
+                   </p>
+                   <div className="flex items-center gap-3">
+                     <button
+                       onClick={() => updateQuantity(item.name, item.size, item.colour, -1)}
+                       className="w-7 h-7 border border-zinc-800 text-white hover:border-zinc-600 transition-colors flex items-center justify-center cursor-pointer text-lg"
+                     >
+                       −
+                     </button>
+                     <span className="text-white text-sm w-4 text-center">{item.quantity}</span>
+                     <button
+                       onClick={() => updateQuantity(item.name, item.size, item.colour, 1)}
+                       className="w-7 h-7 border border-zinc-800 text-white hover:border-zinc-600 transition-colors flex items-center justify-center cursor-pointer text-lg"
+                     >
+                       +
+                     </button>
+                   </div>
+                 </div>
+                 <div className="text-right">
+                   <p className="text-white text-sm font-bold mb-4">
+                     £{(item.price * item.quantity).toFixed(2)}
+                   </p>
+                   <button
+                     onClick={() => removeFromCart(item.name, item.size, item.colour)}
+                     className="text-zinc-600 text-xs tracking-wider uppercase hover:text-white transition-colors cursor-pointer"
+                   >
+                     Remove
+                   </button>
+                 </div>
+               </div>
                 ))}
               </div>
 
