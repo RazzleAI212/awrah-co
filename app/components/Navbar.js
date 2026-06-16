@@ -29,7 +29,6 @@ export default function Navbar() {
 
   const links = [
     { label: "Shop", href: "/shop" },
-    { label: "Sizing", href: "/sizing" },
     { label: "About", href: "/about" },
     { label: "Scholarly Opinion", href: "/scholarly-opinion" },
     { label: "Waitlist", href: isHome ? "#waitlist" : "/#waitlist" },
