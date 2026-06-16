@@ -1,10 +1,12 @@
 "use client"
 import { useState } from "react"
 import Navbar from "../components/Navbar"
+import { useCart } from "../CartContext"
 import Footer from "../components/Footer"
 
 export default function Shop() {
   const [selectedSize, setSelectedSize] = useState(null)
+  const { addToCart } = useCart()
   const [selectedColour, setSelectedColour] = useState("Black")
   const [added, setAdded] = useState(false)
 
@@ -17,6 +19,13 @@ export default function Shop() {
 
   function handleAddToBag() {
     if (!selectedSize) return
+    addToCart({
+      name: "Dual Layer Training Short",
+      size: selectedSize,
+      colour: selectedColour,
+      price: 25.00,
+      image: colours.find(c => c.name === selectedColour).image,
+    })
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)
   }
@@ -100,15 +109,15 @@ export default function Shop() {
 
               {/* Add to Bag */}
               <div className="border-t border-zinc-900 pt-8">
-                <button
-                  onClick={handleAddToBag}
-                  disabled={!selectedSize}
-                  className={`w-full py-4 text-sm font-bold tracking-widest uppercase transition-all ${
-                    selectedSize
-                      ? "bg-white text-black hover:bg-zinc-200"
-                      : "bg-zinc-900 text-zinc-600 cursor-not-allowed"
-                  }`}
-                >
+              <button
+  onClick={handleAddToBag}
+  disabled={!selectedSize}
+  className={`w-full py-4 text-sm font-bold tracking-widest uppercase transition-all cursor-pointer ${
+    selectedSize
+      ? "bg-white text-black hover:bg-zinc-200"
+      : "bg-zinc-900 text-zinc-600 cursor-not-allowed"
+  }`}
+>
                   {added ? "Added to Bag ✓" : "Add to Bag"}
                 </button>
               </div>
