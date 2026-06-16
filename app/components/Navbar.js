@@ -29,6 +29,7 @@ export default function Navbar() {
     { label: "Shop", href: "/shop" },
     { label: "Sizing", href: "/sizing" },
     { label: "About", href: "/about" },
+    { label: "Scholarly Opinion", href: "/scholarly-opinion" },
     { label: "Waitlist", href: isHome ? "#waitlist" : "/#waitlist" },
   ]
   
