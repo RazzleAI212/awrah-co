@@ -72,6 +72,11 @@ export default function Footer() {
     Contact Us
   </Link>
 </li>
+<li>
+  <Link href="/affiliate" className="text-zinc-400 text-xs hover:text-white transition-colors">
+    Become an Affiliate
+  </Link>
+</li>
     <li>
       <Link href="/returns" className="text-zinc-400 text-xs hover:text-white transition-colors">
         Returns Policy
