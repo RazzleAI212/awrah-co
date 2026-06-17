@@ -68,6 +68,11 @@ export default function Footer() {
       </Link>
     </li>
     <li>
+  <Link href="/contact" className="text-zinc-400 text-xs hover:text-white transition-colors">
+    Contact Us
+  </Link>
+</li>
+    <li>
       <Link href="/returns" className="text-zinc-400 text-xs hover:text-white transition-colors">
         Returns Policy
       </Link>
