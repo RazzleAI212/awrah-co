@@ -58,7 +58,10 @@ export default function TrainingShort() {
                 <h1 className="text-white text-3xl font-bold font-serif mb-4">
                   The Training Short
                 </h1>
-                <p className="text-white text-2xl font-bold">£25.00</p>
+                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
+  Dual layer construction designed for the Muslim man who trains. Outer shell sits above the knee, inner layer extends to the knee — full coverage, full performance, no compromise.
+</p>
+<p className="text-white text-2xl font-bold">£25.00</p>
               </div>
 
               {/* Colour */}

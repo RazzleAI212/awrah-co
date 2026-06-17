@@ -44,31 +44,46 @@ export default function Footer() {
           </div>
 
           {/* Info */}
-          <div>
-            <p className="text-zinc-500 text-xs tracking-[0.3em] uppercase mb-4">Info</p>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/about" className="text-zinc-400 text-xs hover:text-white transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/sizing" className="text-zinc-400 text-xs hover:text-white transition-colors">
-                  Sizing Guide
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="text-zinc-400 text-xs hover:text-white transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/scholarly-opinion" className="text-zinc-400 text-xs hover:text-white transition-colors">
-                  Scholarly Opinion
-                </Link>
-              </li>
-            </ul>
-          </div>
+<div>
+  <p className="text-zinc-500 text-xs tracking-[0.3em] uppercase mb-4">Info</p>
+  <ul className="space-y-3">
+    <li>
+      <Link href="/about" className="text-zinc-400 text-xs hover:text-white transition-colors">
+        About
+      </Link>
+    </li>
+    <li>
+      <Link href="/sizing" className="text-zinc-400 text-xs hover:text-white transition-colors">
+        Sizing Guide
+      </Link>
+    </li>
+    <li>
+      <Link href="/faq" className="text-zinc-400 text-xs hover:text-white transition-colors">
+        FAQ
+      </Link>
+    </li>
+    <li>
+      <Link href="/scholarly-opinion" className="text-zinc-400 text-xs hover:text-white transition-colors">
+        Scholarly Opinion
+      </Link>
+    </li>
+    <li>
+      <Link href="/returns" className="text-zinc-400 text-xs hover:text-white transition-colors">
+        Returns Policy
+      </Link>
+    </li>
+    <li>
+      <Link href="/privacy" className="text-zinc-400 text-xs hover:text-white transition-colors">
+        Privacy Policy
+      </Link>
+    </li>
+    <li>
+      <Link href="/terms" className="text-zinc-400 text-xs hover:text-white transition-colors">
+        Terms & Conditions
+      </Link>
+    </li>
+  </ul>
+</div>
 
         </div>
 
