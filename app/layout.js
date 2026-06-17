@@ -1,6 +1,7 @@
 import { Playfair_Display, DM_Sans } from "next/font/google"
 import "./globals.css"
 import { CartProvider } from "./CartContext"
+import CookieBanner from "./components/CookieBanner"
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col bg-black">
         <CartProvider>
           {children}
+          <CookieBanner />
         </CartProvider>
       </body>
     </html>
