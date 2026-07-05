@@ -1,8 +1,19 @@
+"use client"
+import { useEffect } from "react"
 import Link from "next/link"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import { useCart } from "../CartContext"
 
 export default function Success() {
+  const { clearCart, loaded } = useCart()
+
+  useEffect(() => {
+    if (loaded) {
+      clearCart()
+    }
+  }, [loaded])
+
   return (
     <main className="min-h-screen bg-black">
       <Navbar />
