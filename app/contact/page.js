@@ -23,8 +23,19 @@ export default function Contact() {
     e.preventDefault()
     if (!formData.name || !formData.email || !formData.message) return
     setLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setSubmitted(true)
+  
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+  
+    if (response.ok) {
+      setSubmitted(true)
+    } else {
+      console.error("Failed to send message")
+    }
+  
     setLoading(false)
   }
 
