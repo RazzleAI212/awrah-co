@@ -4,8 +4,10 @@ import Navbar from "../../components/Navbar"
 import Footer from "../../components/Footer"
 import { useCart } from "../../CartContext"
 import Link from "next/link"
+import { products } from "../../products"
 
 export default function Underlayer() {
+  const product = products.underlayer
   const [selectedSize, setSelectedSize] = useState(null)
   const [added, setAdded] = useState(false)
   const { addToCart } = useCart()
@@ -15,11 +17,11 @@ export default function Underlayer() {
   function handleAddToBag() {
     if (!selectedSize) return
     addToCart({
-      name: "The Underlayer",
+      name: product.name,
       size: selectedSize,
       colour: "Black",
-      price: 9.99,
-      image: "/underlayer-black.png",
+      price: product.price,
+      image: product.image,
     })
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)
@@ -32,11 +34,10 @@ export default function Underlayer() {
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-start">
 
-            {/* Product Image */}
             <div className="aspect-[3/4] relative overflow-hidden">
               <img
-                src="/underlayer-black.png"
-                alt="Awrah Co The Underlayer"
+                src={product.image}
+                alt={`Awrah Co ${product.name}`}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 shadow-[inset_0_0_60px_30px_rgba(0,0,0,0.8)]" />
@@ -44,21 +45,19 @@ export default function Underlayer() {
               <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black to-transparent" />
             </div>
 
-            {/* Product Details */}
             <div className="flex flex-col gap-8">
 
               <div>
                 <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase mb-3">Awrah Co</p>
                 <h1 className="text-white text-3xl font-bold font-serif mb-4">
-                  The Underlayer
+                  {product.name}
                 </h1>
                 <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  Knee length inner layer designed to be worn under any shorts. Casual everyday coverage — at the gym, at the mall, anywhere.
+                  {product.description}
                 </p>
-                <p className="text-white text-2xl font-bold">£9.99</p>
+                <p className="text-white text-2xl font-bold">£{product.price.toFixed(2)}</p>
               </div>
 
-              {/* Size */}
               <div className="border-t border-zinc-900 pt-8">
                 <div className="flex items-center justify-between mb-4">
                   <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase">Size</p>
@@ -86,7 +85,6 @@ export default function Underlayer() {
                 )}
               </div>
 
-              {/* Add to Bag */}
               <div className="border-t border-zinc-900 pt-8">
                 <button
                   onClick={handleAddToBag}
@@ -101,18 +99,10 @@ export default function Underlayer() {
                 </button>
               </div>
 
-              {/* Product Details */}
               <div className="border-t border-zinc-900 pt-8 space-y-4">
                 <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase">Product Details</p>
                 <ul className="space-y-2">
-                  {[
-                    "Knee length coverage",
-                    "Wear under any shorts",
-                    "Lightweight and breathable",
-                    "Suitable for everyday wear",
-                    "87% Polyester, 13% Elastane",
-                    "Machine washable",
-                  ].map((detail) => (
+                  {product.details.map((detail) => (
                     <li key={detail} className="text-zinc-500 text-sm flex gap-3">
                       <span className="text-zinc-700">—</span>
                       {detail}

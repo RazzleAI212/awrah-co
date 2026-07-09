@@ -4,28 +4,25 @@ import Navbar from "../../components/Navbar"
 import Footer from "../../components/Footer"
 import { useCart } from "../../CartContext"
 import Link from "next/link"
+import { products } from "../../products"
 
 export default function TrainingShort() {
+  const product = products.trainingShort
   const [selectedSize, setSelectedSize] = useState(null)
-  const [selectedColour, setSelectedColour] = useState("Black")
+  const [selectedColour, setSelectedColour] = useState(product.colours[0].name)
   const [added, setAdded] = useState(false)
   const { addToCart } = useCart()
 
   const sizes = ["S", "M", "L", "XL", "XXL"]
-  const colours = [
-    { name: "Black", image: "/product-black.png" },
-    { name: "Navy", image: "/product-navy-blue.png" },
-    { name: "Olive", image: "/product-olive-green.png" },
-  ]
 
   function handleAddToBag() {
     if (!selectedSize) return
     addToCart({
-      name: "The Training Short",
+      name: product.name,
       size: selectedSize,
       colour: selectedColour,
-      price: 25.00,
-      image: colours.find(c => c.name === selectedColour).image,
+      price: product.price,
+      image: product.colours.find(c => c.name === selectedColour).image,
     })
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)
@@ -38,11 +35,10 @@ export default function TrainingShort() {
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-start">
 
-            {/* Product Image */}
             <div className="aspect-[3/4] relative overflow-hidden">
               <img
-                src={colours.find(c => c.name === selectedColour).image}
-                alt={`Awrah Co The Training Short in ${selectedColour}`}
+                src={product.colours.find(c => c.name === selectedColour).image}
+                alt={`Awrah Co ${product.name} in ${selectedColour}`}
                 className="w-full h-full object-cover transition-opacity duration-300"
               />
               <div className="absolute inset-0 shadow-[inset_0_0_60px_30px_rgba(0,0,0,0.8)]" />
@@ -50,27 +46,25 @@ export default function TrainingShort() {
               <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black to-transparent" />
             </div>
 
-            {/* Product Details */}
             <div className="flex flex-col gap-8">
 
               <div>
                 <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase mb-3">Awrah Co</p>
                 <h1 className="text-white text-3xl font-bold font-serif mb-4">
-                  The Training Short
+                  {product.name}
                 </h1>
                 <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-  Dual layer construction designed for the Muslim man who trains. Outer shell sits above the knee, inner layer extends to the knee — full coverage, full performance, no compromise.
-</p>
-<p className="text-white text-2xl font-bold">£25.00</p>
+                  {product.description}
+                </p>
+                <p className="text-white text-2xl font-bold">£{product.price.toFixed(2)}</p>
               </div>
 
-              {/* Colour */}
               <div className="border-t border-zinc-900 pt-8">
                 <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase mb-4">
                   Colour — <span className="text-white">{selectedColour}</span>
                 </p>
                 <div className="flex gap-3">
-                  {colours.map((colour) => (
+                  {product.colours.map((colour) => (
                     <button
                       key={colour.name}
                       onClick={() => setSelectedColour(colour.name)}
@@ -86,7 +80,6 @@ export default function TrainingShort() {
                 </div>
               </div>
 
-              {/* Size */}
               <div className="border-t border-zinc-900 pt-8">
                 <div className="flex items-center justify-between mb-4">
                   <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase">Size</p>
@@ -114,7 +107,6 @@ export default function TrainingShort() {
                 )}
               </div>
 
-              {/* Add to Bag */}
               <div className="border-t border-zinc-900 pt-8">
                 <button
                   onClick={handleAddToBag}
@@ -129,18 +121,10 @@ export default function TrainingShort() {
                 </button>
               </div>
 
-              {/* Product Details */}
               <div className="border-t border-zinc-900 pt-8 space-y-4">
                 <p className="text-zinc-500 text-xs tracking-[0.4em] uppercase">Product Details</p>
                 <ul className="space-y-2">
-                  {[
-                    "Dual layer construction",
-                    "Outer shell sits above the knee",
-                    "Inner layer extends to the knee",
-                    "Lightweight moisture-wicking fabric",
-                    "87% Polyester, 13% Elastane",
-                    "Machine washable",
-                  ].map((detail) => (
+                  {product.details.map((detail) => (
                     <li key={detail} className="text-zinc-500 text-sm flex gap-3">
                       <span className="text-zinc-700">—</span>
                       {detail}

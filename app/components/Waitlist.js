@@ -41,8 +41,8 @@ export default function Waitlist() {
           Be first to know.
         </h2>
         <p className="text-zinc-500 text-sm leading-relaxed mb-12">
-          We're sampling now. Join the waitlist and be the first to know when Awrah Co drops.
-        </p>
+  First production run coming soon, and it'll be limited. The waitlist gets first access before anything goes public.
+</p>
         {submitted ? (
           <p className="text-white text-sm tracking-widest uppercase">
             You're on the list. We'll be in touch.

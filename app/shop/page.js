@@ -1,30 +1,13 @@
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import Link from "next/link"
+import { products } from "../products"
 
 export default function Shop() {
-  const products = [
-    {
-      name: "The Training Short",
-      description: "Dual layer construction. Outer shell above the knee, inner layer to the knee. Built for the gym.",
-      price: "£25.00",
-      image: "/product-black.png",
-      href: "/shop/training-short",
-    },
-    {
-      name: "The Underlayer",
-      description: "Knee length inner layer. Wear under any shorts for everyday modest coverage.",
-      price: "£9.99",
-      image: "/underlayer-black.png",
-      href: "/shop/underlayer",
-    },
-    {
-      name: "The Thermal",
-      description: "Ankle length thermal base layer for winter training. Full coverage, moisture wicking warmth.",
-      price: "£11.99",
-      image: "/thermal-black.png",
-      href: "/shop/thermal",
-    },
+  const productList = [
+    { ...products.trainingShort, image: products.trainingShort.colours[0].image },
+    products.underlayer,
+    products.thermal,
   ]
 
   return (
@@ -37,7 +20,7 @@ export default function Shop() {
             Shop All
           </h1>
           <div className="grid md:grid-cols-3 gap-8">
-            {products.map((product) => (
+            {productList.map((product) => (
               <Link key={product.name} href={product.href} className="group">
                 <div className="aspect-[3/4] relative overflow-hidden mb-6">
                   <img
@@ -54,9 +37,9 @@ export default function Shop() {
                   {product.name}
                 </h2>
                 <p className="text-zinc-500 text-sm leading-relaxed mb-3">
-                  {product.description}
+                  {product.shortDescription}
                 </p>
-                <p className="text-white text-sm font-bold">{product.price}</p>
+                <p className="text-white text-sm font-bold">£{product.price.toFixed(2)}</p>
               </Link>
             ))}
           </div>
